@@ -34,4 +34,7 @@ bioactivity_label = make_labels(df2)
 selection = ['molecule_chembl_id', 'canonical_smiles', 'standard_value']
 df3 = df2[selection]
 
-df3.to_csv('bioactivity_preprocessed_data.csv', index=False)
+bioactivity_label = pd.Series(bioactivity_label, name='bioactivity_label')
+df4 = pd.concat([df3, bioactivity_label], axis=1)
+
+df4.to_csv('bioactivity_preprocessed_data.csv', index=False)
